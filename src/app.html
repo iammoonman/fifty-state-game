@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="https://unpkg.com/xp.css">
+	<title>Fifty State Game</title>
+	<style>
+		body {
+			font-family: "Golos Text", sans-serif;
+		}
+	</style>
+	%sveltekit.head%
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+	<svg width="0" height="0">
+		<filter id="abberate">
+			<feColorMatrix type="matrix" result="red_" values="4 0 0 0 0
+						0 0 0 0 0 
+						0 0 0 0 0 
+						0 0 0 1 0" />
+			<feOffset in="red_" dx="2" dy="0" result="red" />
+			<feColorMatrix type="matrix" in="SourceGraphic" result="blue_" values="0 0 0 0 0
+						0 3 0 0 0 
+						0 0 2 0 0 
+						0 0 0 1 0" />
+			<feOffset in="blue_" dx="-3" dy="0" result="blue" />
+			<feBlend mode="exclusion" in="red" in2="blue" />
+		</filter>
+	</svg>
+	<svg width="0" height="0">
+		<filter id="pixelate" x="0" y="0">
+			<feFlood x="2" y="2" height="1" width="1" />
+			<feComposite width="3" height="3" />
+			<feTile result="a" />
+			<feComposite in="SourceGraphic" in2="a" operator="in" />
+			<feMorphology operator="dilate" radius="1" />
+		</filter>
+	</svg>
+</body>
+
+</html>
