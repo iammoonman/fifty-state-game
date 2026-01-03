@@ -14,14 +14,14 @@
 <svg viewBox="0 0 1000 1000">
     <NorthAmerica />
     <!-- TODO: Come up with fun color(s) for these that aren't already used. -->
-    <Europe height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("EUR")} onclick={() => selectedLocationStore.set("EUR")} />
+    <Europe height="150" width="150" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("EUR")} onclick={() => selectedLocationStore.set("EUR")} />
     <Asia height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("ASI")} onclick={() => selectedLocationStore.set("ASI")} />
     <Africa height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("AFR")} onclick={() => selectedLocationStore.set("AFR")} />
     <Oceania height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("OCE")} onclick={() => selectedLocationStore.set("OCE")} />
     <SouthAmerica height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("SAM")} onclick={() => selectedLocationStore.set("SAM")} />
 </svg>
 <div class="parent">
-    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent" }}>
+    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x:1127, y: 243 } }}>
         <div class="title-bar">
             <div class="title-bar-text">Challenge</div>
             <div class="title-bar-controls">
@@ -52,7 +52,7 @@
             </form>
         </div>
     </div>
-    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x: 360, y: 0 } }}>
+    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x: 905, y: 28 } }}>
         <div class="title-bar">
             <div class="title-bar-text">Scores</div>
             <div class="title-bar-controls">
