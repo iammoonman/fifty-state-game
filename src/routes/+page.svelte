@@ -11,7 +11,7 @@
     let scoresExpand = $state(true);
 </script>
 
-<svg viewBox="0 0 1000 1000">
+<svg viewBox="50 200 700 200">
     <NorthAmerica />
     <!-- TODO: Come up with fun color(s) for these that aren't already used. -->
     <Europe height="150" width="150" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("EUR")} onclick={() => selectedLocationStore.set("EUR")} />
@@ -97,6 +97,10 @@
 </div>
 
 <style>
+    svg {
+        aspect-ratio: 1 / 1;
+        height: 100vmin;
+    }
     div.parent {
         position: fixed;
         top: 0;
