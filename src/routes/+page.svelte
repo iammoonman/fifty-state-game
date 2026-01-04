@@ -7,8 +7,8 @@
     import Oceania from "$lib/svgs/oceania.svelte";
     import SouthAmerica from "$lib/svgs/south-america.svelte";
     import { draggable } from "@neodrag/svelte";
-    let challengeExpand = $state(true);
-    let scoresExpand = $state(true);
+    let challengeExpand = $state(false);
+    let scoresExpand = $state(false);
 </script>
 
 <svg viewBox="50 200 700 200">
@@ -21,7 +21,7 @@
     <SouthAmerica height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("SAM")} onclick={() => selectedLocationStore.set("SAM")} />
 </svg>
 <div class="parent">
-    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x:1127, y: 243 } }}>
+    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent", position: {x: 8, y: 5} }}>
         <div class="title-bar">
             <div class="title-bar-text">Challenge</div>
             <div class="title-bar-controls">
@@ -52,7 +52,7 @@
             </form>
         </div>
     </div>
-    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x: 905, y: 28 } }}>
+    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent", position: {x: 8, y: 35} }}>
         <div class="title-bar">
             <div class="title-bar-text">Scores</div>
             <div class="title-bar-controls">
