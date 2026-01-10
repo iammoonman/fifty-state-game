@@ -8,16 +8,18 @@
     import SouthAmerica from "$lib/svgs/south-america.svelte";
     import { draggable } from "@neodrag/svelte";
     import { enhance } from "$app/forms";
-    import { challengerInfo } from "$lib/scoring";
+    import { challengerInfo, getRegionBonuses } from "$lib/scoring";
     import { loadChallengeRecordsByChallenger } from "./data.remote";
     import { browser } from "$app/environment";
+    import textimage from '$lib/assets/icons/text.png'
+    import fromimage from '$lib/assets/icons/upload.png'
     let challengeExpand = $state(false);
     let scoresExpand = $state(false);
     let loading = $state("Submit");
     $effect(() => {
         if (!challengeExpand) loading = "Submit";
     });
-    let scoreTab = $state('1181634705796378715');
+    let scoreTab = $state("1181634705796378715");
 </script>
 
 <svg viewBox="50 200 700 200">
@@ -30,7 +32,7 @@
     <SouthAmerica height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("SAM")} onclick={() => selectedLocationStore.set("SAM")} />
 </svg>
 <div class="parent">
-    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x: 8, y: 5 } }}>
+    <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent" }}>
         <div class="title-bar">
             <div class="title-bar-text">Challenge</div>
             <div class="title-bar-controls">
@@ -56,11 +58,11 @@
                     <input name="timestamp" type="date" />
                 </div>
                 <div class="field-row-stacked">
-                    <label for="challenge-source">Challenging from</label>
+                    <label for="challenge-source"><img src={fromimage} height="32px" width="32px" alt="" />Challenging from</label>
                     <input name="challenge-source" type="search" placeholder="Use the abbreviated two-letter code..." />
                 </div>
                 <div class="field-row-stacked">
-                    <label for="description">Description</label>
+                    <label for="description"><img src={textimage} height="32px" width="32px" alt="" />Description</label>
                     <textarea id="description" rows="8" style:resize="vertical"></textarea>
                 </div>
                 <div class="field-row-stacked">
@@ -72,7 +74,7 @@
             </form>
         </div>
     </div>
-    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent", position: { x: 8, y: 35 } }}>
+    <div class="window" use:draggable={{ handle: ".title-bar", bounds: "parent" }}>
         <div class="title-bar">
             <div class="title-bar-text">Scores</div>
             <div class="title-bar-controls">
@@ -87,13 +89,13 @@
                     <!-- I feel pretty confident about hardcoding each of us playing. -->
                     <!-- I just know that grabbing the pfps is going to suck. Might just use the XP user images instead lmao. -->
                     {#each Object.entries(challengerInfo) as [id, challenger] (id)}
-                        <button role="tab" onclick={() => scoreTab = id} aria-controls="tab-{id}">{challenger.name}</button>
+                        <button role="tab" onclick={() => (scoreTab = id)} aria-controls="tab-{id}">{challenger.name}</button>
                     {/each}
                 </menu>
                 {#each Object.entries(challengerInfo) as [id, challenger] (id)}
                     <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
-                    <article role="tabpanel" style:display={scoreTab === id ? undefined : 'none'} id="tab-{id}">
-                        <img src={challenger.pfp ?? "https://tse4.mm.bing.net/th/id/OIP.MiyTaoyL4bgDzZSGG9-oaAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"} alt="" style:filter="url(#pixelate)" class="pfp" />
+                    <article role="tabpanel" style:display={scoreTab === id ? undefined : "none"} id="tab-{id}">
+                        <img src={"https://tse4.mm.bing.net/th/id/OIP.MiyTaoyL4bgDzZSGG9-oaAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"} alt={challenger.name} style:filter="url(#pixelate)" class="pfp" />
                         <h3 style:margin-block="0">{challenger.name}</h3>
                         <!-- Compare getChallengeRecords and getCurrentStateOwnership to calculate which rows add points. -->
                         <!-- Again, not sure how the points add up right now. -->
@@ -114,13 +116,21 @@
                                             <td>Loading...</td>
                                         </tr>
                                     {:then challengeRecords}
-                                        <tr>
-                                            {#each challengeRecords as record}
+                                        {@const regionBonuses = getRegionBonuses(challengeRecords)}
+                                        {#each challengeRecords as record}
+                                            <tr>
                                                 <td>{record.locationid}</td>
                                                 <td><time datetime={record.timestamp.toISOString()}>{record.timestamp.toLocaleDateString("en-US", { day: "numeric", month: "long" })}</time></td>
                                                 <td>{record.success ? "1" : "0"}</td>
-                                            {/each}
-                                        </tr>
+                                            </tr>
+                                        {/each}
+                                        {#each regionBonuses as regionBonus}
+                                            <tr>
+                                                <td>{regionBonus.label}</td>
+                                                <td></td>
+                                                <td>{regionBonus.value}</td>
+                                            </tr>
+                                        {/each}
                                     {/await}
                                 {/if}
                             </tbody>
