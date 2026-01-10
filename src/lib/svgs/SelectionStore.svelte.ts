@@ -1,7 +1,7 @@
 import type { SlimChallengeRecord } from "$lib";
 import { readable, writable } from "svelte/store";
 
-const allLocations: { id: string; name: string; group: GroupKeys; adjacentids: string[]; }[] = [
+export const allLocations: { id: string; name: string; group: GroupKeys; adjacentids: string[]; }[] = [
     { id: "AFR", name: 'Africa', group: 'INTER', adjacentids: [] },
     { id: "ASI", name: 'Asia', group: 'INTER', adjacentids: [] },
     { id: "OCE", name: 'Oceania', group: 'INTER', adjacentids: [] },
