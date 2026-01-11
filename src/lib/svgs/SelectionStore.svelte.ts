@@ -12,14 +12,14 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "CR", name: "Caribbean", group: 'TEXAS', adjacentids: [], area: 0},
     //TODO: Add Caribbean svg
     { id: "QC", name: "Québec", group: 'NORTH', adjacentids: ["ON", "NL", "NB", "ME", "NH", "VT", "NY"], area: 0 },
-    { id: "BC", name: "British Columbia", group: 'WEST', adjacentids: ["AK", "NT", "AB", "YT", "MT", "ID", "WA"], area: 0 },
+    { id: "BC", name: "British Columbia", group: 'TERR', adjacentids: ["AK", "NT", "AB", "YT", "MT", "ID", "WA"], area: 0 },
     // MB and ON are combined into one "Manitoba and Ontario" state
     { id: "MB", name: "Manitoba", group: 'LAKES', adjacentids: ["SK", "NU", "ON", "MN", "ND"], area: 0 },
     { id: "ON", name: "Ontario", group: 'LAKES', adjacentids: ["MB", "QC", "NY", "MI", "WI", "MN"], area: 0 },
     // SK and AB are combined into one "Plains Canada" state
     { id: "SK", name: "Saskatchewan", group: 'PLAINS', adjacentids: ["AB", "NT", "MB", "ND", "MT"], area: 0 },
     { id: "AB", name: "Alberta", group: 'PLAINS', adjacentids: ["BC", "NT", "SK", "MT"], area: 0 },
-    // Next 3 states (NU, NT, YT) are combined into one "The Territories" state
+    // Next 3 states (NU, NT, YT) are combined into one "Canadian Territories" state
     { id: "NU", name: "Nunavut", group: 'TERR', adjacentids: ["MB", "NT"], area: 0 },
     { id: "NT", name: "Northwest Territories", group: 'TERR', adjacentids: ["NU", "SK", "AB", "BC", "YT"], area: 0 },
     { id: "YT", name: "Yukon", group: 'TERR', adjacentids: ["AK", "BC", "YT"], area: 0 },
@@ -31,17 +31,17 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "GL", name: "Greenland", group: 'NORTH', adjacentids: [], area: 0},
     // TODO: Add Greenland svg
     { id: "MA", name: "Massachusetts", group: 'NORTH', adjacentids: ["NH", "VT", "NY", "CT", "RI"], area: 7800 },
-    { id: "MN", name: "Minnesota", group: 'PLAINS', adjacentids: ["MB", "ON", "WI", "IA", "ND", "SD"], area: 79627 },
+    { id: "MN", name: "Minnesota", group: 'LAKES', adjacentids: ["MB", "ON", "WI", "IA", "ND", "SD"], area: 79627 },
     { id: "MT", name: "Montana", group: 'PLAINS', adjacentids: ["BC", "AB", "SK", "ID", "WY", "ND", "SD"], area: 145546 },
     { id: "ND", name: "North Dakota", group: 'PLAINS', adjacentids: ["SK", "MB", "MN", "SD", "MT"], area: 69001 },
-    { id: "ID", name: "Idaho", group: 'WEST', adjacentids: ["BC", "WA", "OR", "NV", "UT", "WY", "MT"], area: 82643 },
-    { id: "WA", name: "Washington", group: 'WEST', adjacentids: ["BC", "ID", "OR"], area: 66456 },
+    { id: "ID", name: "Idaho", group: 'TERR', adjacentids: ["BC", "WA", "OR", "NV", "UT", "WY", "MT"], area: 82643 },
+    { id: "WA", name: "Washington", group: 'TERR', adjacentids: ["BC", "ID", "OR"], area: 66456 },
     { id: "AZ", name: "Arizona", group: 'TEXAS', adjacentids: ["CA", "NV", "UT", "NM"], area: 113594 },
-    { id: "CA", name: "California", group: 'WEST', adjacentids: ["OR", "NV", "AZ"], area: 155779 },
+    { id: "CA", name: "California", group: 'TERR', adjacentids: ["OR", "NV", "AZ"], area: 155779 },
     { id: "CO", name: "Colorado", group: 'PLAINS', adjacentids: ["UT", "WY", "NE", "KS", "OK", "NM"], area: 103642 },
-    { id: "NV", name: "Nevada", group: 'WEST', adjacentids: ["OR", "ID", "UT", "AZ", "CA"], area: 109781 },
+    { id: "NV", name: "Nevada", group: 'TERR', adjacentids: ["OR", "ID", "UT", "AZ", "CA"], area: 109781 },
     { id: "NM", name: "New Mexico", group: 'TEXAS', adjacentids: ["AZ", "CO", "OK", "TX"], area: 121298 },
-    { id: "OR", name: "Oregon", group: 'WEST', adjacentids: ["WA", "ID", "NV", "CA"], area: 95988 },
+    { id: "OR", name: "Oregon", group: 'TERR', adjacentids: ["WA", "ID", "NV", "CA"], area: 95988 },
     { id: "UT", name: "Utah", group: 'PLAINS', adjacentids: ["ID", "WY", "CO", "NV", "AZ"], area: 82170 },
     { id: "WY", name: "Wyoming", group: 'PLAINS', adjacentids: ["ID", "MT", "NE", "SD", "CO", "UT"], area: 97093 },
     { id: "AR", name: "Arkansas", group: 'TEXAS', adjacentids: ["OK", "MO", "TN", "MS", "LA", "TX"], area: 52035 },
@@ -51,7 +51,7 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "NE", name: "Nebraska", group: 'PLAINS', adjacentids: ["WY", "SD", "ID", "MO", "KS", "CO"], area: 76824 },
     { id: "OK", name: "Oklahoma", group: 'TEXAS', adjacentids: ["CO", "KS", "MO", "AR", "TX", "NM"], area: 68595 },
     { id: "SD", name: "South Dakota", group: 'PLAINS', adjacentids: ["MT", "ND", "MN", "IA", "NE", "WY"], area: 75811 },
-    { id: "LA", name: "Louisiana", group: 'SOUTH', adjacentids: ["TX", "AR", "MS"], area: 43204 },
+    { id: "LA", name: "Louisiana", group: 'TEXAS', adjacentids: ["TX", "AR", "MS"], area: 43204 },
     { id: "TX", name: "Texas", group: 'TEXAS', adjacentids: ["NM", "OK", "AR", "LA"], area: 261232 },
     { id: "CT", name: "Connecticut", group: 'NORTH', adjacentids: ["NY", "MA", "RI"], area: 4842 },
     { id: "NH", name: "New Hampshire", group: 'NORTH', adjacentids: ["VT", "QC", "ME", "MA"], area: 8953 },
@@ -79,12 +79,12 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "PA", name: "Pennsylvania", group: 'URBIA', adjacentids: ["NY", "NJ", "MD", "DE", "WV", "OH"], area: 44743 },
     { id: "ME", name: "Maine", group: 'NORTH', adjacentids: ["NH", "QC", "NB"], area: 30843 },
     { id: "MI", name: "Michigan", group: 'LAKES', adjacentids: ["WI", "ON", "OH", "IN", "IL"], area: 56539 },
-    { id: "AK", name: "Alaska", group: 'WEST', adjacentids: ["YT", "BC"], area: 570641 },
-    { id: "HI", name: "Hawaii", group: 'WEST', adjacentids: [], area: 6423 },
+    { id: "AK", name: "Alaska", group: 'TERR', adjacentids: ["YT", "BC"], area: 570641 },
+    { id: "HI", name: "Hawaii", group: 'TERR', adjacentids: [], area: 6423 },
 ];
 export const allLocationsStore = readable(Object.fromEntries(allLocations.map((loc) => [loc.id, loc])));
 export const selectedLocationStore = writable<string | undefined>("AFR");
-export type GroupKeys = 'NORTH' | 'SOUTH' | 'LAKES' | 'TEXAS' | 'WEST' | 'URBIA' | 'TERR' | 'INTER' | 'PLAINS';
+export type GroupKeys = 'NORTH' | 'SOUTH' | 'LAKES' | 'TEXAS' | 'URBIA' | 'TERR' | 'INTER' | 'PLAINS';
 export const groups: Record<GroupKeys, { color: string, label: string; }> = {
     'NORTH': {
         color: '#1982c4',
@@ -101,10 +101,6 @@ export const groups: Record<GroupKeys, { color: string, label: string; }> = {
     'TEXAS': {
         color: '#52a675',
         label: 'Southwest',
-    },
-    'WEST': {
-        color: '#4267ac',
-        label: 'West Coast',
     },
     'URBIA': {
         color: '#c5ca30',
