@@ -13,6 +13,8 @@
     import { browser } from "$app/environment";
     import textimage from '$lib/assets/icons/text.png'
     import fromimage from '$lib/assets/icons/upload.png'
+    import infoimage from '$lib/assets/icons/info.png'
+    import failimage from '$lib/assets/icons/fail.png'
     let challengeExpand = $state(false);
     let scoresExpand = $state(false);
     let loading = $state("Submit");
@@ -54,7 +56,7 @@
             >
                 <h3 style:margin-block="0">{$allLocationsStore[$selectedLocationStore ?? ""]?.name}</h3>
                 <div class="field-row-stacked">
-                    <label for="timestamp">Timestamp</label>
+                    <label for="timestamp"><img src={infoimage} alt="" width="32px" height="32px" style:margin-right="0.5ch" />Timestamp</label>
                     <input name="timestamp" type="date" />
                 </div>
                 <div class="field-row-stacked">
@@ -65,12 +67,13 @@
                     <label for="description"><img src={textimage} height="32px" width="32px" alt="" />Description</label>
                     <textarea id="description" rows="8" style:resize="vertical"></textarea>
                 </div>
-                <div class="field-row-stacked">
+                <div class="field-row-stacked" style:flex-direction="row" style:align-content="center">
+                    <img src={failimage} alt="" width="32px" height="32px" style:margin-right="0.5ch" style:padding-top="0.5em" />
                     <input type="checkbox" name="" id="success" />
                     <label for="success">Did you succeed?</label>
                 </div>
                 <input type="hidden" name="locationid" value={$selectedLocationStore} />
-                <button type="submit" disabled={loading !== "Submit"}>{loading ? "Submitting..." : "Submit"}</button>
+                <button type="submit" disabled={loading !== "Submit"}>{loading}</button>
             </form>
         </div>
     </div>
