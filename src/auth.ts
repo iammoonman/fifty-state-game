@@ -17,11 +17,12 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
 	secret: AUTH_SECRET,
 	trustHost: true,
 	callbacks: {
-		async session({ session, token }: { session: any; token: any }) {
+		async session({ session, token, user }: { session: any; token: any; user: any }) {
 			// Destructure the parameters to get `session` and `token`
 			if (session.user) {
 				session.user.id = token.id;
 				session.user.discriminator = token.discriminator;
+				session.user = user;
 			}
 			return session;
 		},

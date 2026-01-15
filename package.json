@@ -23,6 +23,7 @@
 	"dependencies": {
 		"@auth/sveltekit": "^1.11.1",
 		"@neodrag/svelte": "^2.3.3",
+		"arktype": "^2.1.29",
 		"mongodb": "^7.0.0"
 	}
 }
