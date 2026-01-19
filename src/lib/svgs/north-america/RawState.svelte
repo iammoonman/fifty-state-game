@@ -29,10 +29,10 @@
 <style>
     path {
         cursor: pointer;
-        stroke-width: 0.5px;
+        stroke-width: 1px;
         stroke: currentColor;
     }
     .saturated {
-        filter: saturate(0.3);
+        fill: #999999 !important;
     }
 </style>
