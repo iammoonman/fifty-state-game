@@ -8,22 +8,23 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "EUR", name: 'Europe', group: 'INTER', adjacentids: [], area: 0 },
     { id: "SAM", name: 'South America', group: 'INTER', adjacentids: [], area: 0 },
     { id: "MX", name: "Mexico", group: 'TEXAS', adjacentids: ["CA", "AZ", "NM", "TX"], area: 0},
-    //TODO: Add Central America (Guatemala south through Panama) to Mexico svg
+    //TODO: Add Antarctica.svelte file and svg
+    //TODO: Add Central America (Guatemala south through Panama) to Mexico svg - remove from South America svg
     { id: "CR", name: "Caribbean", group: 'TEXAS', adjacentids: [], area: 0},
     //TODO: Add Caribbean svg
     { id: "QC", name: "Québec", group: 'NORTH', adjacentids: ["ON", "NL", "NB", "ME", "NH", "VT", "NY"], area: 0 },
     { id: "BC", name: "British Columbia", group: 'TERR', adjacentids: ["AK", "NT", "AB", "YT", "MT", "ID", "WA"], area: 0 },
-    // MB and ON are combined into one "Manitoba and Ontario" state
+    //TODO:  MB and ON are combined into one "Manitoba and Ontario" state
     { id: "MB", name: "Manitoba", group: 'LAKES', adjacentids: ["SK", "NU", "ON", "MN", "ND"], area: 0 },
     { id: "ON", name: "Ontario", group: 'LAKES', adjacentids: ["MB", "QC", "NY", "MI", "WI", "MN"], area: 0 },
-    // SK and AB are combined into one "Plains Canada" state
+    //TODO:  SK and AB are combined into one "Plains Canada" state
     { id: "SK", name: "Saskatchewan", group: 'PLAINS', adjacentids: ["AB", "NT", "MB", "ND", "MT"], area: 0 },
     { id: "AB", name: "Alberta", group: 'PLAINS', adjacentids: ["BC", "NT", "SK", "MT"], area: 0 },
-    // Next 3 states (NU, NT, YT) are combined into one "Canadian Territories" state
+    //TODO:  Next 3 states (NU, NT, YT) are combined into one "Canadian Territories" state
     { id: "NU", name: "Nunavut", group: 'TERR', adjacentids: ["MB", "NT"], area: 0 },
     { id: "NT", name: "Northwest Territories", group: 'TERR', adjacentids: ["NU", "SK", "AB", "BC", "YT"], area: 0 },
     { id: "YT", name: "Yukon", group: 'TERR', adjacentids: ["AK", "BC", "YT"], area: 0 },
-    // Next 5 states (NB, NS, NL, PE, GL) are combined into one "Atlantic Canada" state
+    //TODO:  Next 5 states (NB, NS, NL, PE, GL) are combined into one "Atlantic Canada" state
     { id: "NB", name: "New Brunswick", group: 'NORTH', adjacentids: ["PE", "NS", "ME", "QC"], area: 0 },
     { id: "NS", name: "Nova Scotia", group: 'NORTH', adjacentids: ["NB"], area: 0 },
     { id: "NL", name: "Newfoundland and Labrador", group: 'NORTH', adjacentids: ["QC"], area: 0 },
@@ -87,35 +88,43 @@ export const selectedLocationStore = writable<string | undefined>("AFR");
 export type GroupKeys = 'NORTH' | 'SOUTH' | 'LAKES' | 'TEXAS' | 'URBIA' | 'TERR' | 'INTER' | 'PLAINS';
 export const groups: Record<GroupKeys, { color: string, label: string; }> = {
     'NORTH': {
-        color: '#1982c4',
+        // color: '#1982c4',
+        color: "#dddddd",
         label: 'New England',
     },
     'SOUTH': {
-        color: '#ff595e',
+        // color: '#ff595e',
+        color: "#dddddd",
         label: 'Southeast',
     },
     'LAKES': {
-        color: '#8ac926',
+        // color: '#8ac926',
+        color: "#dddddd",
         label: 'Great Lakes',
     },
     'TEXAS': {
-        color: '#52a675',
+        // color: '#52a675',
+        color: "#dddddd",
         label: 'Southwest',
     },
     'URBIA': {
-        color: '#c5ca30',
+        // color: '#c5ca30',
+        color: "#dddddd",
         label: 'Mid-Atlantic',
     },
     'TERR': {
-        color: '#ff924c',
+        // color: '#ff924c',
+        color: "#dddddd",
         label: 'Frontier',
     },
     'INTER': {
-        color: '#6a4c93',
+        // color: '#6a4c93',
+        color: "#dddddd",
         label: 'International',
     },
     'PLAINS': {
-        color: '#ffca3a',
+        // color: '#ffca3a',
+        color: "#dddddd",
         label: 'Mountains/Plains'
     }
 };

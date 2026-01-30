@@ -12,6 +12,7 @@
         return pathElement?.getBBox();
     }
     // If a user has claimed this state, put their pfp in the middle of the path.
+    let hideOtherBorders = true;
 </script>
 
 <!-- {#await page.data.stateRecords then records}  -->
@@ -23,7 +24,7 @@
         <!-- getRawBBox().y + getRawBBox().height / 2 -->
     <!-- {/if} -->
 <!-- {/await} -->
-<path vector-effect="non-scaling-stroke" class:saturated={$selectedLocationStore === id} onclick={() => selectedLocationStore.set(id)} onkeydown={() => selectedLocationStore.set(id)} bind:this={pathElement} d={$NAStatePathStore[id].d} fill={groups[$allLocationsStore[id].group].color} {...rest} />
+<path vector-effect="non-scaling-stroke" stroke-dasharray={$NAStatePathStore[id].dashes} class:saturated={$selectedLocationStore === id} onclick={() => selectedLocationStore.set(id)} onkeydown={() => selectedLocationStore.set(id)} bind:this={pathElement} d={$NAStatePathStore[id].d} fill={groups[$allLocationsStore[id].group].color} {...rest} />
 
 <style>
     path {
@@ -32,6 +33,6 @@
         stroke: currentColor;
     }
     .saturated {
-        filter: saturate(0.3);
+        fill: #999999 !important;
     }
 </style>
