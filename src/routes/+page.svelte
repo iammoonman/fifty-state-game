@@ -44,7 +44,8 @@
         </div>
         <div style:position="relative" style:padding="1em" style:display={challengeExpand ? "block" : "none"}>
             <form
-                action=""
+                action="/?challenge"
+                method="POST"
                 style="display: flex; flex-direction: column; gap: 1em"
                 use:enhance={() => {
                     loading = "Submitting...";

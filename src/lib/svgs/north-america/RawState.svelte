@@ -24,7 +24,7 @@
         <!-- getRawBBox().y + getRawBBox().height / 2 -->
     <!-- {/if} -->
 <!-- {/await} -->
-<path class:saturated={$selectedLocationStore === id} style:stroke={$NAStatePathStore[id].dashes === undefined && hideOtherBorders ? 'none' : undefined} stroke-dasharray={$NAStatePathStore[id].dashes} onclick={() => selectedLocationStore.set(id)} onkeydown={() => selectedLocationStore.set(id)} bind:this={pathElement} d={$NAStatePathStore[id].d} fill={groups[$allLocationsStore[id].group].color} {...rest} />
+<path vector-effect="non-scaling-stroke" class:saturated={$selectedLocationStore === id} onclick={() => selectedLocationStore.set(id)} onkeydown={() => selectedLocationStore.set(id)} bind:this={pathElement} d={$NAStatePathStore[id].d} fill={groups[$allLocationsStore[id].group].color} {...rest} />
 
 <style>
     path {
