@@ -15,6 +15,8 @@
     import fromimage from '$lib/assets/icons/upload.png'
     import infoimage from '$lib/assets/icons/info.png'
     import failimage from '$lib/assets/icons/fail.png'
+    import Antarctica from "$lib/svgs/antarctica.svelte";
+    import Greenland from "$lib/svgs/greenland.svelte";
     let challengeExpand = $state(false);
     let scoresExpand = $state(false);
     let loading = $state("Submit");
@@ -32,6 +34,8 @@
     <Africa height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("AFR")} onclick={() => selectedLocationStore.set("AFR")} />
     <Oceania height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("OCE")} onclick={() => selectedLocationStore.set("OCE")} />
     <SouthAmerica height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("SAM")} onclick={() => selectedLocationStore.set("SAM")} />
+    <Antarctica height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("ANT")} onclick={() => selectedLocationStore.set('ANT')} />
+    <Greenland height="100" width="100" role="button" tabindex="0" onkeypress={() => selectedLocationStore.set("GL")} onclick={() => selectedLocationStore.set('GL')} />
 </svg>
 <div class="parent">
     <div class="window" style:width="44ch" use:draggable={{ handle: ".title-bar", bounds: "parent" }}>
@@ -55,7 +59,7 @@
                     };
                 }}
             >
-                <h3 style:margin-block="0">{$allLocationsStore[$selectedLocationStore ?? ""]?.name}</h3>
+                <h3 style:margin-block="0">{$allLocationsStore[$selectedLocationStore ?? ""]?.name} {$selectedLocationStore}</h3>
                 <div class="field-row-stacked">
                     <label for="timestamp"><img src={infoimage} alt="" width="32px" height="32px" style:margin-right="0.5ch" />Timestamp</label>
                     <input name="timestamp" type="date" />

@@ -1,40 +1,32 @@
 import type { SlimChallengeRecord } from "$lib";
 import { readable, writable } from "svelte/store";
 
-export const allLocations: { id: string; name: string; group: GroupKeys; adjacentids: string[]; area: number;}[] = [
+export const allLocations: { id: string; name: string; group: GroupKeys; adjacentids: string[]; area: number; }[] = [
     { id: "AFR", name: 'Africa', group: 'INTER', adjacentids: [], area: 0 },
     { id: "ASI", name: 'Asia', group: 'INTER', adjacentids: [], area: 0 },
     { id: "OCE", name: 'Oceania', group: 'INTER', adjacentids: [], area: 0 },
     { id: "EUR", name: 'Europe', group: 'INTER', adjacentids: [], area: 0 },
     { id: "SAM", name: 'South America', group: 'INTER', adjacentids: [], area: 0 },
-    { id: "MX", name: "Mexico", group: 'TEXAS', adjacentids: ["CA", "AZ", "NM", "TX"], area: 0},
-    //TODO: Add Antarctica.svelte file and svg
-    //TODO: Add Central America (Guatemala south through Panama) to Mexico svg - remove from South America svg
-    { id: "CR", name: "Caribbean", group: 'TEXAS', adjacentids: [], area: 0},
-    //TODO: Add Caribbean svg
+    { id: "MX", name: "Mexico", group: 'TEXAS', adjacentids: ["CA", "AZ", "NM", "TX"], area: 0 },
+    { id: "ANT", name: "Antarctica", group: 'INTER', adjacentids: [], area: 0 },
+    { id: "CR", name: "Caribbean", group: 'TEXAS', adjacentids: [], area: 0 },
     { id: "QC", name: "Québec", group: 'NORTH', adjacentids: ["ON", "NL", "NB", "ME", "NH", "VT", "NY"], area: 0 },
-    { id: "BC", name: "British Columbia", group: 'TERR', adjacentids: ["AK", "NT", "AB", "YT", "MT", "ID", "WA"], area: 0 },
-    //TODO:  MB and ON are combined into one "Manitoba and Ontario" state
-    { id: "MB", name: "Manitoba", group: 'LAKES', adjacentids: ["SK", "NU", "ON", "MN", "ND"], area: 0 },
-    { id: "ON", name: "Ontario", group: 'LAKES', adjacentids: ["MB", "QC", "NY", "MI", "WI", "MN"], area: 0 },
-    //TODO:  SK and AB are combined into one "Plains Canada" state
-    { id: "SK", name: "Saskatchewan", group: 'PLAINS', adjacentids: ["AB", "NT", "MB", "ND", "MT"], area: 0 },
-    { id: "AB", name: "Alberta", group: 'PLAINS', adjacentids: ["BC", "NT", "SK", "MT"], area: 0 },
-    //TODO:  Next 3 states (NU, NT, YT) are combined into one "Canadian Territories" state
-    { id: "NU", name: "Nunavut", group: 'TERR', adjacentids: ["MB", "NT"], area: 0 },
-    { id: "NT", name: "Northwest Territories", group: 'TERR', adjacentids: ["NU", "SK", "AB", "BC", "YT"], area: 0 },
-    { id: "YT", name: "Yukon", group: 'TERR', adjacentids: ["AK", "BC", "YT"], area: 0 },
-    //TODO:  Next 5 states (NB, NS, NL, PE, GL) are combined into one "Atlantic Canada" state
-    { id: "NB", name: "New Brunswick", group: 'NORTH', adjacentids: ["PE", "NS", "ME", "QC"], area: 0 },
-    { id: "NS", name: "Nova Scotia", group: 'NORTH', adjacentids: ["NB"], area: 0 },
-    { id: "NL", name: "Newfoundland and Labrador", group: 'NORTH', adjacentids: ["QC"], area: 0 },
-    { id: "PE", name: "Prince Edward Island", group: 'NORTH', adjacentids: ["NB"], area: 0 },
-    { id: "GL", name: "Greenland", group: 'NORTH', adjacentids: [], area: 0},
-    // TODO: Add Greenland svg
+    { id: "BC", name: "British Columbia", group: 'TERR', adjacentids: ["AK", "NU", "SK", "NU", "MT", "ID", "WA"], area: 0 },
+    { id: "ON", name: "Ontario & Manitoba", group: 'LAKES', adjacentids: ["QC", "NY", "MI", "WI", "MN", "SK", "NU", "MN", "ND"], area: 0 },
+    { id: "SK", name: "Saskatchewan & Alberta", group: 'PLAINS', adjacentids: ["NU", "ON", "ND", "MT", "BC", "MT"], area: 0 },
+    { id: "NU", name: "Nunavut", group: 'TERR', adjacentids: ["ON","AK","SK", "SK", "BC"], area: 0 },
+
+    // //TODO:  Next 5 states (NB, NS, NL, PE, GL) are combined into one "Atlantic Canada" state
+    // { id: "NB", name: "New Brunswick", group: 'NORTH', adjacentids: ["PE", "NS", "ME", "QC"], area: 0 },
+    // { id: "NS", name: "Nova Scotia", group: 'NORTH', adjacentids: ["NB"], area: 0 },
+    // { id: "NL", name: "Newfoundland and Labrador", group: 'NORTH', adjacentids: ["QC"], area: 0 },
+    // { id: "PE", name: "Prince Edward Island", group: 'NORTH', adjacentids: ["NB"], area: 0 },
+    // { id: "GL", name: "Greenland", group: 'NORTH', adjacentids: [], area: 0 },
+
     { id: "MA", name: "Massachusetts", group: 'NORTH', adjacentids: ["NH", "VT", "NY", "CT", "RI"], area: 7800 },
-    { id: "MN", name: "Minnesota", group: 'LAKES', adjacentids: ["MB", "ON", "WI", "IA", "ND", "SD"], area: 79627 },
-    { id: "MT", name: "Montana", group: 'PLAINS', adjacentids: ["BC", "AB", "SK", "ID", "WY", "ND", "SD"], area: 145546 },
-    { id: "ND", name: "North Dakota", group: 'PLAINS', adjacentids: ["SK", "MB", "MN", "SD", "MT"], area: 69001 },
+    { id: "MN", name: "Minnesota", group: 'LAKES', adjacentids: ["ON", "ON", "WI", "IA", "ND", "SD"], area: 79627 },
+    { id: "MT", name: "Montana", group: 'PLAINS', adjacentids: ["BC", "SK", "ID", "WY", "ND", "SD"], area: 145546 },
+    { id: "ND", name: "North Dakota", group: 'PLAINS', adjacentids: ["SK", "ON", "MN", "SD", "MT"], area: 69001 },
     { id: "ID", name: "Idaho", group: 'TERR', adjacentids: ["BC", "WA", "OR", "NV", "UT", "WY", "MT"], area: 82643 },
     { id: "WA", name: "Washington", group: 'TERR', adjacentids: ["BC", "ID", "OR"], area: 66456 },
     { id: "AZ", name: "Arizona", group: 'TEXAS', adjacentids: ["CA", "NV", "UT", "NM"], area: 113594 },
@@ -80,7 +72,7 @@ export const allLocations: { id: string; name: string; group: GroupKeys; adjacen
     { id: "PA", name: "Pennsylvania", group: 'URBIA', adjacentids: ["NY", "NJ", "MD", "DE", "WV", "OH"], area: 44743 },
     { id: "ME", name: "Maine", group: 'NORTH', adjacentids: ["NH", "QC", "NB"], area: 30843 },
     { id: "MI", name: "Michigan", group: 'LAKES', adjacentids: ["WI", "ON", "OH", "IN", "IL"], area: 56539 },
-    { id: "AK", name: "Alaska", group: 'TERR', adjacentids: ["YT", "BC"], area: 570641 },
+    { id: "AK", name: "Alaska", group: 'TERR', adjacentids: ["NU", "BC"], area: 570641 },
     { id: "HI", name: "Hawaii", group: 'TERR', adjacentids: [], area: 6423 },
 ];
 export const allLocationsStore = readable(Object.fromEntries(allLocations.map((loc) => [loc.id, loc])));
